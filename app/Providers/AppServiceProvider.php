@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Http\Controllers\LaravelLearning\ChildClass;
+use App\Http\Controllers\LaravelLearning\ChildOfChild;
+use App\Http\Controllers\LaravelLearning\ServiceContainerController;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +16,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind(ChildClass::class, function($app){
+            return new ChildClass('Hoang Do');
+        });
     }
 
     /**
@@ -23,6 +28,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        
     }
 }

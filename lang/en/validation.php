@@ -149,6 +149,14 @@ return [
     */
 
     'custom' => [
+        'validation' => [
+            'name' => [
+                'max' => ':attribute :max cu oi'
+            ]
+        ],
+        'name' => [
+            'max' => ':attribute :max cu oi'
+        ],
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
@@ -165,6 +173,8 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'name' => 'NAME'
+    ],
 
 ];
