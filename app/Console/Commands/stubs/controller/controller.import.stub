@@ -4,10 +4,13 @@ namespace {{ namespace }};
 
 use {{ rootNamespace }}Http\Controllers\Controller;
 use {{ namespacedModel}};
+use App\Trait\Import\{{class}}Importer;
 use Illuminate\Http\Request;
 
 class {{ class }} extends Controller
 {
+    use {{class}}Importer;
+    
     protected $model = {{model}};
 
     public function index(Request $req){

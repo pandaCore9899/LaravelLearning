@@ -1,9 +1,9 @@
 <?php
-namespace App\Trait;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-trait TestImportTraitNameSpace{
+trait TestImport2Importer{
     public function import(Request $req){
 
     }

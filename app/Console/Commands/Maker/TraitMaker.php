@@ -5,6 +5,7 @@ namespace App\Console\Commands\Maker;
 use Illuminate\Console\GeneratorCommand;
 use Illuminate\Support\Str;
 use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Console\Input\InputArgument;
 
 class TraitMaker extends GeneratorCommand
 {
@@ -30,16 +31,6 @@ class TraitMaker extends GeneratorCommand
      * @var string
      */
     protected $description = 'Command description';
-
-    protected function buildClass($name)
-    {
-        $traitNameSpace = $this->getNamespace($name);
-        $replace = [];
-        return str_replace(
-            array_keys($replace), array_values($replace), parent::buildClass($name)
-        );
-    }
-
    
     protected function getStub()
     {
@@ -53,14 +44,8 @@ class TraitMaker extends GeneratorCommand
 
     protected function getPath($name)
     {
-        $path = "";
-        $this->info('root name space : '.$this->rootNamespace());
-        $this->info('before : '.$name);
         $name = Str::replaceFirst($this->rootNamespace(), '', $name);
-        $this->info('after : '.$name);
-        $path = $name;
-        $this->info($path);
-        return $this->laravel['path'].'/'.str_replace('\\', '/', $path).'.php';
+        return $this->laravel['path'].'/'.str_replace('\\', '/', $name).'.php';
     }
     
    
@@ -77,10 +62,17 @@ class TraitMaker extends GeneratorCommand
     protected function getOptions()
     {
         return [
-            ['import', 'i', InputOption::VALUE_NONE, 'create mode'],
-            ['export', 'e', InputOption::VALUE_NONE, 'create mode'],
-            ['custom', 'c', InputOption::VALUE_NONE, 'create mode'],
+            ['import', 'i', InputOption::VALUE_NONE, 'Create A Import Trait'],
+            ['export', 'e', InputOption::VALUE_NONE, 'Create A Export Trait'],
+            ['custom', 'c', InputOption::VALUE_NONE, 'Create A Custom Trait'],
         ];
         
+    }
+
+    protected function getArguments()
+    {
+        return [
+            ['name', InputArgument::REQUIRED, 'The name of the trait'],
+        ];
     }
 }
