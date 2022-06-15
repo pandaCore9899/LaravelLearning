@@ -53,7 +53,8 @@ return [
     'channels' => [
         'stack' => [
             'driver' => 'stack',
-            'channels' => ['single'],
+            'name' => 'PandaCore Log',
+            'channels' => ['single', 'slack'],
             'ignore_exceptions' => false,
         ],
 

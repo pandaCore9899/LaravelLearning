@@ -1,0 +1,10 @@
+<?php
+namespace {{ namespace }};
+
+use Illuminate\Http\Request;
+
+trait {{ class }}{
+    public function export(Request $req){
+
+    }
+}

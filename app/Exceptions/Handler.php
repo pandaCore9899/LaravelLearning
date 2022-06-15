@@ -46,5 +46,14 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
+        $this->reportable(function (MyCustomException $e){
+            return false;//stop use default exception;
+        });
+    }
+
+    public function context(){
+        return array_merge(parent::context(),[
+            'foo' => 'bar'
+        ]);
     }
 }

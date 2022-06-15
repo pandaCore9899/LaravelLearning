@@ -1,0 +1,15 @@
+<?php
+
+namespace {{ namespace }};
+
+use {{ rootNamespace }}Http\Controllers\Controller;
+use {{ namespacedModel}};
+use Illuminate\Http\Request;
+
+class {{ class }} extends Controller
+{
+    protected $model = {{model}};
+
+    public function index(Request $req){
+    }
+}
